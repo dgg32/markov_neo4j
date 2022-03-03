@@ -6,7 +6,7 @@
 
   
 
-This repository contains code and data for my article "[Hidden Markov Model with Neo4j](https://medium.com/p/660ecd15ed19)".
+This repository contains code and data for my article "[Hidden Markov Model with Neo4j](https://medium.com/p/dde776f9047b)".
 
 1. Both scripts are for data generation in Neo4j.
 
