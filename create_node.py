@@ -20,6 +20,12 @@ examples = {
         "emission_p": {'H': {"A": 0.2, "C": 0.3, "G": 0.3, "T": 0.2}, 'L': {"A": 0.3, "C": 0.2, "G": 0.2, "T": 0.3}},
         "transition_p": {'H': {"H": 0.5, "L": 0.5}, 'L': {"H": 0.4, "L": 0.6}},
         "initial_p": {"H": 0.5, "L": 0.5}
+    },
+    "4": {
+        "observed_states": ["N", "N", "N", "N", "N", "E", "E", "N", "N", "N"],
+        "emission_p": {'S1': {"N": 0.3, "E": 0.7}, 'S2': {"N": 0.8, "E": 0.2}},
+        "transition_p": {'S1': {"S1": 0.5, "S2": 0.5}, 'S2': {"S1": 0.3, "S2": 0.7}},
+        "initial_p": {"S1": 0.2, "S2": 0.8}
     }
 }
 
@@ -63,7 +69,7 @@ class import_data:
                             if step > 0:
                                 #create transitions
                                 for hid_2 in hidden_states:
-                                    hid_hid_connect_query = f"MATCH (w:Hidden), (w2:Hidden) WHERE w.name = '{hid_2}' AND w.step='{step-1}' AND w2.name = '{hid}' AND w2.step = '{step}' CREATE (w)-[r:transmits {{name: '{hid_2}-transmits-{hid}', p: {transition_p[hid_2][hid]}}}]->(w2)"
+                                    hid_hid_connect_query = f"MATCH (w:Hidden), (w2:Hidden) WHERE w.name = '{hid_2}' AND w.step='{step-1}' AND w2.name = '{hid}' AND w2.step = '{step}' CREATE (w)-[r:transits {{name: '{hid_2}-transits-{hid}', p: {transition_p[hid_2][hid]}}}]->(w2)"
                                     tx.run(hid_hid_connect_query)
                             else:
                                 #initial p

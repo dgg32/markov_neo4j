@@ -56,7 +56,7 @@ class import_data:
                             
                             for previous_hid in hidden_names:
                                 #get transition probability
-                                get_transision_p = f"MATCH (w_0:Hidden)-[r:transmits]-(w_1:Hidden) WHERE w_0.name='{previous_hid}' AND w_0.step='{previous_step}' AND w_1.name='{hid}' AND w_1.step='{t}' RETURN r.p;"
+                                get_transision_p = f"MATCH (w_0:Hidden)-[r:transits]-(w_1:Hidden) WHERE w_0.name='{previous_hid}' AND w_0.step='{previous_step}' AND w_1.name='{hid}' AND w_1.step='{t}' RETURN r.p;"
                                 transision_p = tx.run(get_transision_p).single()[0]
                                 
                                 #calculate the probability
